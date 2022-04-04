@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Leave_Management_System.Models.Leave>
+@using System.Data.Entity;
+@{
+    ViewBag.Title = "MyLeaves";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .popover {
+        max-width: 600px;
+        height: 500px;
+    }
+</style>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-rel=popover]').popover({
+            html: true,
+            trigger: "hover"
+        });
+    });
+ </script>
+<br />
+<div class="row">
+    <div class="col-md-3 text-center">
+        عدد الاجازات السنوية المتبقية <b><mark>@ViewData["numberOfYLeave"]</mark></b>
+    </div>
+    <div class="col-md-6">
+        عدد الاجازات المرضية المتبقية <b><mark>@ViewData["numberOfPLeave"]</mark></b>
+    </div>
+    <div class="col-md-3 text-center">
+        عدد الاجازات الكلي <b><mark> @ViewData["numberOfLeaves"]</mark></b>
+
+    </div>
+</div>
+<br />
+<div class="card">
+
+    <div class="card-header">
+        إجازاتي
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.From_Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.To_Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Reson)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Leave_State)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Leave_Type)
+                        </th>
+                        <th>
+                           المعاينة الطبية
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.From_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.To_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reson)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Leave_Status.Ls_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Leave_Type1.Lt_Name)
+                    </td>
+                    @{
+                        if (item.Leave_State == 6 && item.Leave_Type == 2 && item.medicalInspectionImgPath == null)
+                        {
+                            <td>
+                                @Html.ActionLink("عرض", "medicalInspection", new { id = item.Leave_Id })
+                            </td>
+                        }
+                        else if (item.Leave_State == 6 && item.Leave_Type == 2 && item.medicalInspectionImgPath != null)
+                        {
+                <td>
+                    <i class="menu-icon fa fa-picture-o fa-2x" data-rel="popover" title="<strong>معاينة طبية</strong>" data-placement="right" data-content="<img src='@Url.Content(item.medicalInspectionImgPath)' width=100% height=100%>"></i>
+                    @*<img class="tstimg" src="@Url.Content(item.medicalInspectionImgPath)" width="100" height="100" alt="معاينة طبية" />*@
+
+                </td>
+                        }
+                        else
+                        {
+                            <td>
+                            </td>
+                        }
+                    }
+
+                </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿@model Leave_Management_System.Models.Leave
+
+@{
+    ViewBag.Title = "ResLeaveReq";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("medicalInspection", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <br />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Leave_Id)
+    <div class="card">
+
+        <div class="card-header">
+            اجازات بحاجة الى صور
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.From_Date)
+                            </th>
+
+
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.To_Date)
+                            </th>
+
+
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Reson)
+                            </th>
+
+
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Employee.Emp_Name)
+                            </th>
+
+
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Leave_State)
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => model.From_Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.To_Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Reson)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Employee.Emp_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Leave_Status.Ls_Name)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <br /><br />
+        <div class="text-center">
+            <div class="form-group">
+                @Html.LabelFor(model => model.medicalInspectionImgPath, htmlAttributes: new { @class = "control-label col-md-2" })
+                @*@Html.EditorFor(model => model.medicalInspectionImgPath, new { htmlAttributes = new { @class = "form-control" } })*@
+                <img src="" height="400" width="400" id="ImagePreview" />
+                <input type="file" name="ImageUpload" class="form-control" id="imgfile" required accept="image/jpeg,image/png" onchange="ShowImagePreview(this, document.getElementById('ImagePreview'))" />
+                @*@Html.ValidationMessageFor(model => model.medicalInspectionImgPath, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="اتخذ اجراء" class="btn btn-default" />
+        </div>
+    </div>
+}

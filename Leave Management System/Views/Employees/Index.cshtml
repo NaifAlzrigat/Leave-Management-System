@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3 text-center">
+        الاسم :  @Session["logedUser"]
+    </div>
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-3 text-center">
+        الصلاحية :  @Session["loginRole"]
+
+    </div>
+</div>
+

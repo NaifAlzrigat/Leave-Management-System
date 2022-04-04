@@ -1,0 +1,39 @@
+﻿@{ if (User.IsInRole("ادمن"))
+    {
+        <li>
+            <a href="Employee/Index"><span class="glyphicon glyphicon-home"></span></a>
+            @*<span class="glyphicon glyphicon-tags"></span>*@
+        </li>
+        <li>
+            @Html.ActionLink("إضافة موظف", "AddEmp", "Admin")
+        </li>
+        <li>@Html.ActionLink("بيانات الموظفين", "EmpDetails", "Admin")</li>
+        <li>@Html.ActionLink("طلبات الاجازة للمدراء", "ManagersLeaveRequest", "Admin")</li>
+        <li>@Html.ActionLink("تسجيل خروج", "Logout", "Employees")</li>
+    }
+
+    else if (User.IsInRole("باحث"))
+    {
+        <li>@Html.ActionLink("طلب إجازة", "LeaveRequest", "Employees")</li>
+        <li>@Html.ActionLink("إجازاتي", "MyLeaves", "Employees")</li>
+        <li>@Html.ActionLink("تسجيل خروج", "Logout", "Employees")</li>
+    }
+    else if (User.IsInRole("رئيس قسم"))
+    {
+        <li>@Html.ActionLink("طلب إجازة", "LeaveRequest", "Employees")</li>
+        <li>@Html.ActionLink("إجازاتي", "MyLeaves", "Employees")</li>
+        <li>@Html.ActionLink("طلبات الباحثين", "ResearcherLeaveRequest", "Employees")</li>
+        <li>@Html.ActionLink("تسجيل خروج", "Logout", "Employees")</li>
+    }
+    else if (User.IsInRole("مدير"))
+    {
+        <li>@Html.ActionLink("طلب إجازة", "LeaveRequest", "Employees")</li>
+        <li>@Html.ActionLink("إجازاتي", "MyLeaves", "Employees")</li>
+        <li>@Html.ActionLink("طلبات الموظفين", "EmpLeaveRequest", "Employees")</li>
+        <li>@Html.ActionLink("تسجيل خروج", "Logout", "Employees")</li>
+    }
+    //else
+    //{
+    //    Response.Redirect("/Employees/login");
+    //}
+}

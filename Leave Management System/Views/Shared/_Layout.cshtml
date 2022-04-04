@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/bootstrap.rtl.min.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/fontawesome")
+    <link href="~/Content/FloatingLabel.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap3-floating-labels.css" rel="stylesheet" />
+    <link href="~/Content/Custom.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                </button>
+                <img src="/Images/Logo.png" class="logo" />
+
+                &nbsp;
+
+
+            </div>
+
+            <div class="navbar-collapse collapse PT">
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.Partial("_Menu")
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <br />
+        @RenderBody()
+
+        <hr />
+
+        <br />
+
+        <div class="row FPR">
+            <div class="col-md-12 text-center">حقوق التطوير محفوظة لصندوق المعونة الوطنيّة - &copy; 2022 </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/MyScripts.js"></script>
+</body>
+</html>

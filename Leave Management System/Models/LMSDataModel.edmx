@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LMS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Dep_Id" />
+          </Key>
+          <Property Name="Dep_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dep_Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Off_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Emp_Id" />
+          </Key>
+          <Property Name="Emp_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Available_Y_Leave" Type="int" />
+          <Property Name="Avilable_P_Leave" Type="int" />
+          <Property Name="Department" Type="int" />
+          <Property Name="Role" Type="int" Nullable="false" />
+          <Property Name="Office" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="Leave_Id" />
+          </Key>
+          <Property Name="Leave_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="From_Date" Type="datetime" Nullable="false" />
+          <Property Name="To_Date" Type="datetime" Nullable="false" />
+          <Property Name="Reson" Type="nvarchar(max)" />
+          <Property Name="Leave_State" Type="int" Nullable="false" />
+          <Property Name="Employee_Id" Type="int" Nullable="false" />
+          <Property Name="Leave_Type" Type="int" Nullable="false" />
+          <Property Name="medicalInspectionImgPath" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Leave_Status">
+          <Key>
+            <PropertyRef Name="Ls_Id" />
+          </Key>
+          <Property Name="Ls_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ls_Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Leave_Type">
+          <Key>
+            <PropertyRef Name="Lt_Id" />
+          </Key>
+          <Property Name="Lt_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lt_Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offices">
+          <Key>
+            <PropertyRef Name="Office_Id" />
+          </Key>
+          <Property Name="Office_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Office_Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role_Type" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Department_Offices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Office_Id" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Off_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Dep_Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Offices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Office_Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Office" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Role_Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_Id" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Leave_Status">
+          <End Role="Leave_Status" Type="Self.Leave_Status" Multiplicity="1" />
+          <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leave_Status">
+              <PropertyRef Name="Ls_Id" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Leave_State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Leave_Type">
+          <End Role="Leave_Type" Type="Self.Leave_Type" Multiplicity="1" />
+          <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leave_Type">
+              <PropertyRef Name="Lt_Id" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Leave_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LMS_DBModelStoreContainer">
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leave" EntityType="Self.Leave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leave_Status" EntityType="Self.Leave_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leave_Type" EntityType="Self.Leave_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Department_Offices" Association="Self.FK_Department_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Offices" Association="Self.FK_Employee_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Employee" Association="Self.FK_Leave_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Leave" EntitySet="Leave" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Leave_Status" Association="Self.FK_Leave_Leave_Status">
+            <End Role="Leave_Status" EntitySet="Leave_Status" />
+            <End Role="Leave" EntitySet="Leave" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Leave_Type" Association="Self.FK_Leave_Leave_Type">
+            <End Role="Leave_Type" EntitySet="Leave_Type" />
+            <End Role="Leave" EntitySet="Leave" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LMS_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Dep_Id" />
+          </Key>
+          <Property Name="Dep_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dep_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Off_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Office" Relationship="Self.FK_Department_Offices" FromRole="Department" ToRole="Offices" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Emp_Id" />
+          </Key>
+          <Property Name="Emp_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Available_Y_Leave" Type="Int32" />
+          <Property Name="Avilable_P_Leave" Type="Int32" />
+          <Property Name="Department" Type="Int32" />
+          <Property Name="Role" Type="Int32" Nullable="false" />
+          <Property Name="Office" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Department1" Relationship="Self.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Office1" Relationship="Self.FK_Employee_Offices" FromRole="Employee" ToRole="Offices" />
+          <NavigationProperty Name="Role1" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="Leaves" Relationship="Self.FK_Leave_Employee" FromRole="Employee" ToRole="Leave" />
+        </EntityType>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="Leave_Id" />
+          </Key>
+          <Property Name="Leave_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="From_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="To_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Leave_State" Type="Int32" Nullable="false" />
+          <Property Name="Employee_Id" Type="Int32" Nullable="false" />
+          <Property Name="Leave_Type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Leave_Employee" FromRole="Leave" ToRole="Employee" />
+          <NavigationProperty Name="Leave_Status" Relationship="Self.FK_Leave_Leave_Status" FromRole="Leave" ToRole="Leave_Status" />
+          <NavigationProperty Name="Leave_Type1" Relationship="Self.FK_Leave_Leave_Type" FromRole="Leave" ToRole="Leave_Type" />
+          <Property Name="medicalInspectionImgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Leave_Status">
+          <Key>
+            <PropertyRef Name="Ls_Id" />
+          </Key>
+          <Property Name="Ls_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ls_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Leaves" Relationship="Self.FK_Leave_Leave_Status" FromRole="Leave_Status" ToRole="Leave" />
+        </EntityType>
+        <EntityType Name="Leave_Type">
+          <Key>
+            <PropertyRef Name="Lt_Id" />
+          </Key>
+          <Property Name="Lt_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lt_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Leaves" Relationship="Self.FK_Leave_Leave_Type" FromRole="Leave_Type" ToRole="Leave" />
+        </EntityType>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="Office_Id" />
+          </Key>
+          <Property Name="Office_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Office_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK_Department_Offices" FromRole="Offices" ToRole="Department" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Offices" FromRole="Offices" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Type" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Department_Offices">
+          <End Role="Offices" Type="Self.Office" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Office_Id" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Off_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Dep_Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Offices">
+          <End Role="Offices" Type="Self.Office" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="Office_Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Office" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Role_Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_Id" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Leave_Status">
+          <End Role="Leave_Status" Type="Self.Leave_Status" Multiplicity="1" />
+          <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leave_Status">
+              <PropertyRef Name="Ls_Id" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Leave_State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Leave_Type">
+          <End Role="Leave_Type" Type="Self.Leave_Type" Multiplicity="1" />
+          <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leave_Type">
+              <PropertyRef Name="Lt_Id" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Leave_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LMS_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Leaves" EntityType="Self.Leave" />
+          <EntitySet Name="Leave_Status" EntityType="Self.Leave_Status" />
+          <EntitySet Name="Leave_Type" EntityType="Self.Leave_Type" />
+          <EntitySet Name="Offices" EntityType="Self.Office" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <AssociationSet Name="FK_Department_Offices" Association="Self.FK_Department_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Department" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Offices" Association="Self.FK_Employee_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Employee" Association="Self.FK_Leave_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Leave" EntitySet="Leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Leave_Status" Association="Self.FK_Leave_Leave_Status">
+            <End Role="Leave_Status" EntitySet="Leave_Status" />
+            <End Role="Leave" EntitySet="Leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Leave_Type" Association="Self.FK_Leave_Leave_Type">
+            <End Role="Leave_Type" EntitySet="Leave_Type" />
+            <End Role="Leave" EntitySet="Leaves" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LMS_DBModelStoreContainer" CdmEntityContainer="LMS_DBEntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="LMS_DBModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Dep_Id" ColumnName="Dep_Id" />
+                <ScalarProperty Name="Dep_Name" ColumnName="Dep_Name" />
+                <ScalarProperty Name="Off_Id" ColumnName="Off_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="LMS_DBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
+                <ScalarProperty Name="Emp_Name" ColumnName="Emp_Name" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Available_Y_Leave" ColumnName="Available_Y_Leave" />
+                <ScalarProperty Name="Avilable_P_Leave" ColumnName="Avilable_P_Leave" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leaves">
+            <EntityTypeMapping TypeName="LMS_DBModel.Leave">
+              <MappingFragment StoreEntitySet="Leave">
+                <ScalarProperty Name="medicalInspectionImgPath" ColumnName="medicalInspectionImgPath" />
+                <ScalarProperty Name="Leave_Id" ColumnName="Leave_Id" />
+                <ScalarProperty Name="From_Date" ColumnName="From_Date" />
+                <ScalarProperty Name="To_Date" ColumnName="To_Date" />
+                <ScalarProperty Name="Reson" ColumnName="Reson" />
+                <ScalarProperty Name="Leave_State" ColumnName="Leave_State" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="Leave_Type" ColumnName="Leave_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leave_Status">
+            <EntityTypeMapping TypeName="LMS_DBModel.Leave_Status">
+              <MappingFragment StoreEntitySet="Leave_Status">
+                <ScalarProperty Name="Ls_Id" ColumnName="Ls_Id" />
+                <ScalarProperty Name="Ls_Name" ColumnName="Ls_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leave_Type">
+            <EntityTypeMapping TypeName="LMS_DBModel.Leave_Type">
+              <MappingFragment StoreEntitySet="Leave_Type">
+                <ScalarProperty Name="Lt_Id" ColumnName="Lt_Id" />
+                <ScalarProperty Name="Lt_Name" ColumnName="Lt_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="LMS_DBModel.Office">
+              <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="Office_Id" ColumnName="Office_Id" />
+                <ScalarProperty Name="Office_Name" ColumnName="Office_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="LMS_DBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="Role_Type" ColumnName="Role_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

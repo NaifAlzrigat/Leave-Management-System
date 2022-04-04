@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Leave_Management_System.Models.Employee>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/bootstrap.rtl.min.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/fontawesome")
+    <link href="~/Content/FloatingLabel.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap3-floating-labels.css" rel="stylesheet" />
+    <link href="~/Content/Custom.css" rel="stylesheet" />
+    <title>PrintRep</title>
+</head>
+<body>
+    <div class="text-center">
+        <img src="~/Images/Logo.png" width="150" height="130" alt="NAF" />
+        <h2>صندوق المعونة الوطنية</h2>
+        <h3>كشف الموظفين</h3>
+        <br />
+        <br />
+        <div class="card">
+
+            <div class="card-header">
+                بيانات الموظفين
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="table table-striped table-bordered">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Emp_Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.User_Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Password)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Office)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Department)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Role)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Phone)
+                                </th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Emp_Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User_Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Password)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Office1.Office_Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Department1.Dep_Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Role1.Role_Type)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Phone)
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

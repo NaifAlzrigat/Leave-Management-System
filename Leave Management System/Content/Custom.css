@@ -1,0 +1,842 @@
+@font-face {
+    font-family: 'DroidNaskh-Regular';
+    src: url('~/fonts/GE_SS_Two_Bold.eot');
+}
+html {
+    direction: rtl;
+    font-family: 'DroidNaskh-Regular';
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+body {
+    /*font-family: 'DroidNaskh-Regular';*/
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #023a46;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+.btn-danger {
+    color: #ffffff;
+    background-color: #cc0001;
+    border-color: #cc0001;
+    width:200px;
+    height:50px;
+}
+
+.border-left {
+    border-left-width:10px;
+    border-left-color:red;
+    border-left-style:solid;
+}
+
+a {
+    color: #023a46;
+}
+.navbar {
+    margin-bottom:0px;
+}
+.navbar-inverse {
+    background-color: white;
+    border-color: white;
+    padding-right: 30px;
+    margin-top:10px;
+}
+.navbar-brand
+{
+    font-size:larger;
+}
+    .navbar-inverse .navbar-nav > li > a {
+        color: #023a46;
+    }
+        .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+            color: #ffffff;
+            background-color: #023a46;
+            border-radius: 2px;
+        }
+.navbar-toggle {
+    position: relative;
+    float: left;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid;
+    border-radius: 4px;
+}
+.navbar-inverse .navbar-toggle {
+    background-color: #023a46;
+    border-color: #ffffff;
+}
+    .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+        background-color: #023a46;
+        border-color: #ffffff;
+    }
+.form-control:focus {
+    border-color: #023a46;
+    box-shadow:none;
+}
+.btn-default {
+    color: #023a46;
+    background-color: white;
+    border-color: #023a46;
+    border-style: solid;
+    width:50%;
+}
+.btn-attach {
+    color: #023a46;
+    background-color: white;
+    border-color: #023a46;
+    border-style: solid;
+    width: 75%;
+}
+
+.btn-attach.focus, .btn-attach:focus {
+    color: #ffffff;
+    background-color: #023a46;
+    border-color: #023a46;
+    border-style: solid;
+}
+
+.btn-attach:hover {
+    color: #ffffff;
+    background-color: #023a46;
+    border-color: #ffffff;
+    border-style: solid;
+}
+
+.btn-attach.active, .btn-attach:active, .open > .dropdown-toggle.btn-attach {
+    color: #ffffff;
+    background-color: #023a46;
+    border-color: #023a46;
+    border-style: solid;
+}
+
+    .btn-attach.active.focus, .btn-attach.active:focus, .btn-attach.active:hover, .btn-attach:active.focus, .btn-attach:active:focus, .btn-attach:active:hover, .open > .dropdown-toggle.btn-attach.focus, .open > .dropdown-toggle.btn-attach:focus, .open > .dropdown-toggle.btn-attach:hover {
+        color: #023a46;
+        background-color: #ffffff;
+        border-color: #023a46;
+        border-style: solid;
+    }
+
+.btn-attach.active, .btn-attach:active, .open > .dropdown-toggle.btn-attach {
+    background-image: none;
+}
+
+.btn-login {
+    color: white;
+    background-color: #023a46;
+    border-color: #023a46;
+    border-style: solid;
+    width: 50%;
+}
+
+    .btn-login:hover {
+        border-color: white;
+    }
+
+    .btn-default.focus, .btn-default:focus {
+        color: #ffffff;
+        background-color: #023a46;
+        border-color: #023a46;
+        border-style: solid;
+    }
+    .btn-default:hover {
+        color: #ffffff;
+        background-color: #023a46;
+        border-color: #ffffff;
+        border-style: solid;
+    }
+    .btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {
+        color: #ffffff;
+        background-color: #023a46;
+        border-color: #023a46;
+        border-style: solid;
+    }
+        .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open > .dropdown-toggle.btn-default.focus, .open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover {
+            color: #023a46;
+            background-color: #ffffff;
+            border-color: #023a46;
+            border-style:solid;
+        }
+    .btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {
+        background-image: none;
+    }
+
+.glyphicon-usd:before {
+    content: "\e148";
+    margin-left: 10px;
+}
+
+.glyphicon-check:before {
+    content: "\e067";
+    margin-left: 10px;
+}
+.glyphicon-plus-sign:before {
+    content: "\e081";
+    margin-left: 10px;
+}
+
+.glyphicon-minus-sign:before {
+    content: "\e082";
+    margin-left: 10px;
+}
+.glyphicon-ok-sign:before {
+    content: "\e084";
+    margin-left: 10px;
+}
+.glyphicon-remove-sign:before {
+    content: "\e083";
+    margin-left: 10px;
+}
+.glyphicon-edit:before {
+    content: "\e065";
+    margin-left: 10px;
+}
+.glyphicon-actor:before {
+    content: "\e008";
+    margin-left: 10px;
+}
+.glyphicon-stop:before {
+    content: "\e074";
+    margin-left: 10px;
+}
+.glyphicon-play:before {
+    content: "\e072";
+    margin-left: 10px;
+}
+.glyphicon-list-alt:before {
+    content: "\e032";
+    margin-left: 10px;
+}
+.glyphicon-pause:before {
+    content: "\e073";
+    margin-left: 10px;
+}
+.glyphicon-retweet:before {
+    content: "\e115";
+    margin-left: 10px;
+}
+.glyphicon-scissors:before {
+    content: "\e226";
+    margin-left: 10px;
+}
+.glyphicon-triangle-bottom:before {
+    content: "\e252";
+    margin-left: 10px;
+}
+.glyphicon-filter:before {
+    content: "\e138";
+    margin-left: 10px;
+}
+.glyphicon-stats:before {
+    content: "\e185";
+    margin-left: 10px;
+}
+.glyphicon-th:before {
+    content: "\e011";
+    margin-left: 10px;
+}
+.glyphicon-th-list:before {
+    content: "\e012";
+    margin-left: 10px;
+}
+.glyphicon-cog:before {
+    content: "\e019";
+    margin-left: 10px;
+}
+.glyphicon-home:before {
+    content: "\e021";
+    margin-left: 10px;
+}
+.glyphicon-envelope:before {
+    content: "\2709";
+    margin-left: 10px;
+}
+.glyphicon-tasks:before {
+    content: "\e137";
+    margin-left: 10px;
+}
+.glyphicon-education:before {
+    content: "\e233";
+    margin-left: 10px;
+}
+.glyphicon-credit-card:before {
+    content: "\e177";
+    margin-left: 10px;
+}
+.glyphicon-plus:before {
+    content: "\2b";
+   padding-left: 3px;
+}
+.glyphicon-plus-sign:before {
+    content: "\e081";
+    padding-left: 3px;
+}
+.glyphicon-info-sign:before {
+    content: "\e086";
+    padding-left: 3px;
+}
+.glyphicon-log-in:before {
+    content: "\e161";
+    padding-left: 3px;
+}
+.glyphicon-log-out:before {
+    content: "\e163";
+    padding-left: 3px;
+}
+.glyphicon-edit:before {
+    content: "\e065";
+    padding-left: 3px;
+}
+.glyphicon-exclamation-sign:before {
+    content: "\e101";
+    padding-left: 3px;
+}
+.glyphicon-globe:before {
+    content: "\e135";
+    padding-left: 3px;
+}
+.ValuesHeader {
+    font-size: x-large;
+    padding-top: 7px;
+    padding-left: 20px;
+    text-align: center;
+}
+.ValuesItems {
+    font-size: medium;
+    padding-top: 15px;
+    padding-left: 20px;
+    text-align: center;
+}
+.CtrlLbl{
+    font-size:large;
+    padding-top:8px;
+}
+.jumbotron {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #fff;
+    border: solid;
+    border-width: 1px;
+    border-color: #023a46;
+}
+    .jumbotron .h2, .jumbotron h2 {
+        font-size: 25px;
+    }
+.mainLogo {
+    width: 140px;
+    height: 140px
+}
+.logo {
+    width: 100px;
+    height: 100px
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 36px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border: 1px solid #023a46;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.Container {
+    width: 100%;
+}
+.Progressbar {
+}
+    .Progressbar li {
+        list-style-type: none;
+        float: right;
+        width: 14.28%;
+        position: relative;
+        text-align: center;
+    }
+        .Progressbar li:before {
+            font-family: 'GLYPHICONS Halflings';
+            content: '\e013';
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            display: block;
+            text-align: center;
+            margin: 0px auto 10px auto;
+            border-radius: 50%;
+            line-height: 25px;
+            background-color: #ddd;
+            color: #fff;
+            padding-top: 2px;
+        }
+        .Progressbar li:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #ddd;
+            top: 15px;
+            right: -50%;
+            z-index: -1;
+        }
+        .Progressbar li:first-child:after {
+            content: none;
+        }
+        .Progressbar li.active {
+            color: #023a46;
+        }
+            .Progressbar li.active:before {
+                border-color: #023a46;
+                background-color: #023a46;
+                padding-top: 2px;
+            }
+            .Progressbar li.active + li:after {
+                background-color: #023a46;
+            }
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #023a46;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
+.mainCard {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #023a46;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+.card-header {
+    padding-top: 17px;
+    padding-right: 20px;
+    margin-bottom: 0;
+    background-color: #023a46;
+    border-bottom: 1px solid #023a46;
+    height: 50px;
+    color: #FFFFFF;
+}
+    .card-header:first-child {
+        border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    }
+    .card-header + .list-group .list-group-item:first-child {
+        border-top: 0;
+    }
+    .PL{
+        padding-left:50px;
+    }
+    .PR{
+        padding-right:50px;
+    }
+.PT {
+    padding-top: 50px;
+}
+.PB {
+    bottom: 10px;
+}
+.FPB {
+    bottom: 15px;
+}
+.DPT {
+    padding-top: 6px;
+}
+
+.FPT {
+    padding-top: 5px;
+}
+.MT{
+    margin-top:10px;
+}
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+.spr {
+    padding-right:10px;
+}
+.spl {
+    padding-left: 10px;
+}
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'DroidNaskh-Regular','Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/*************************************************************************************/
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    color: #fff;
+    cursor: default;
+    background-color: #023a46;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.nav-tabs > li > a:hover {
+    color: #fff;
+    cursor: default;
+    background-color: #023a46;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.nav > li {
+    position: relative;
+    display: block;
+    padding-top: 5px;
+}
+/*************************************************************************************/
+row > .col-xs-3 {
+    display: flex;
+    flex: 0 0 25%;
+    max-width: 25%
+}
+.flex-nowrap {
+    -webkit-flex-wrap: nowrap !important;
+    -ms-flex-wrap: nowrap !important;
+    flex-wrap: nowrap !important;
+}
+.flex-row {
+    display: flex;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+    -webkit-flex-direction: row !important;
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+}
+/******************************************************/
+.text-danger {
+    color: #a94442;
+    font-size:small;
+}
+/***************************/
+.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    direction: rtl;
+}
+.ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+        ul.pagination li a.active {
+            color: white;
+            background-color: #023a46;
+        }
+ul.pagination li a:hover:not(.active) {
+    background-color: #023a46;
+    color: white;
+}
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #023a46;
+    border-color: #023a46;
+}
+/*************************************************************/
+
+.panel-info > .panel-heading {
+    color: #FFFFFF;
+    background-color: #023a46;
+    border-color: #023a46;
+}
+
+.panel-default > .panel-heading {
+    color: #FFFFFF;
+    background-color: #023a46;
+    border-color: #023a46;
+}
+.panel-title > a, .panel-title > a:active {
+    display: block;
+}
+.panel-heading a:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e113";
+    float: left;
+    transition: all 0.5s;
+}
+.panel-heading a.collapsed:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    float: left;
+    transition: all 0.5s;
+}
+
+textarea {
+    overflow: auto;
+    width: 100%;
+    height: 150px;
+}
+
+.thTitle {
+    width: 25%;
+    background-color: #023a46;
+    color: #FFFFFF;
+    vertical-align: central;
+    text-align: center;
+}
+
+.tdTitle {
+    width: 25%;
+    background-color: #023a46;
+    color:#FFFFFF;
+    vertical-align:central;
+    text-align:right;
+}
+.tdData {
+    width: 25%;
+    background-color: #FFFFFF;
+    color: #023a46;
+    vertical-align: central;
+    text-align: right;
+}
+
+.HItdTitle {
+    width: 0.1666666666666667%;
+    background-color: #023a46;
+    color: #FFFFFF;
+    vertical-align: central;
+    text-align: right;
+}
+
+.HItdData {
+    width: 0.1666666666666667%;
+    background-color: #FFFFFF;
+    color: #023a46;
+    vertical-align: central;
+    text-align: right;
+}
+
+.incThTitle {
+    background-color: #023a46;
+    color: #FFFFFF;
+    vertical-align: central;
+    text-align: center;
+}
+.incTdData {
+    background-color: #FFFFFF;
+    color: #023a46;
+    vertical-align: central;
+    text-align: center;
+}
+
+.panel-sub-heading {
+    background-color: #f9f9f9;
+    border-width:5px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-right:10px;
+}
+.panel-sub-heading a::before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e113";
+    float: left;
+    transition: all 0.5s;
+}
+.panel-sub-heading a.collapsed:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    float: left;
+    transition: all 0.5s;
+}
+
+
+.btnCreate {
+    width: 45px;
+    height: 45px;
+    background-color: #9c7429;
+    color: #FFFFFF;
+    border-radius: 50px;
+    padding-top: 8px;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.btnCreaterP {
+   padding-right:50px;
+   padding-top:9px;
+}
+
+.btn:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.footer {
+    background-color: #023a46;
+    color: #FFFFFF;
+    border-bottom-left-radius: 5px ;
+    border-bottom-right-radius:5px;
+}
+.FPR{
+    padding-right:10px;
+}
+.FPL {
+    padding-left: 10px;
+}
+.Holder {
+    background-color: #f9f9f9;
+}
+.container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.footerA {
+    padding-top:10px;
+    color: #FFFFFF;
+    text-decoration: solid;
+}
+
+    .footerA:hover {
+        color: #FFFFFF;
+        text-decoration: underline;
+    }
+
+.body-content{
+    border-width:5px;
+}
+
+.bold {
+    font-size:larger;
+  font-weight:bolder;
+}
+
+.SProgressbar {
+}
+
+    .SProgressbar li {
+        list-style-type: none;
+        float: right;
+        width: 11%;
+        position: relative;
+        text-align: center;
+    }
+
+        .SProgressbar li:before {
+            font-family: 'GLYPHICONS Halflings';
+            font-size:xx-small;
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ddd;
+            display: block;
+            text-align: center;
+            margin: 0px auto 10px auto;
+            border-radius: 50%;
+            line-height: 15px;
+            background-color: #ddd;
+            color: #FFFFFF;
+            padding-top: 1px;
+        }
+
+        .SProgressbar li:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #ddd;
+            top: 15px;
+            right: -50%;
+            z-index: -1;
+        }
+
+        .SProgressbar li:first-child:after {
+            content: none;
+        }
+
+        .SProgressbar li.active {
+            color: #9c7429;
+        }
+
+            .SProgressbar li.active:before {
+                border-color: #9c7429;
+                background-color: #9c7429;
+                padding-top: 2px;
+            }
+
+            .SProgressbar li.active + li:after {
+                background-color: #023a46;
+            }
+
+        .Golden {
+            color: #9c7429;
+        }
+
+.SearchBtn {
+    background-color: #9c7429;
+    color: #FFFFFF;
+}
+
+.Level {
+    background-color: #023a46;
+    color: #FFFFFF;
+    height: 50px;
+    padding-right: 10px;
+    padding-top: 15px;
+}
+
+
+
+.gauge {
+    width: 300px;
+    height: 300px;
+}
+.sgauge {
+    width: 175px;
+    height: 175px;
+}
+
+.naif:hover {
+    color: #ffffff;
+    background-color: #023a46;
+    border-radius: 2px;
+}

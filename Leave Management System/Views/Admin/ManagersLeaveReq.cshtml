@@ -1,0 +1,112 @@
+﻿@model Leave_Management_System.Models.Leave
+
+@{
+    ViewBag.Title = "ResLeaveReq";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <br />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Leave_Id)
+    <div class="card">
+
+        <div class="card-header">
+            إجازاتي
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.From_Date)
+                            </th>
+
+
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.To_Date)
+                            </th>
+
+
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Reson)
+                            </th>
+
+
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Employee.Emp_Name)
+                            </th>
+
+
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Leave_State)
+                            </th>
+
+
+
+                            <th>
+                                قرار المدير
+                            </th>
+
+
+
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => model.From_Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.To_Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Reson)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Employee.Emp_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Leave_Status.Ls_Name)
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    @{
+                                        var selectList2 = new SelectList(
+                                            new List<SelectListItem>
+                                            {
+                                    new SelectListItem {Text = "موافقة", Value = "6"},
+                                    new SelectListItem {Text = "رفض مدير", Value = "5"},
+                    }, "Value", "Text");
+                                    }
+                                    @*@Html.LabelFor(model => model.Leave_Satatus, "Leave_Satatus", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.Leave_State, selectList2, "--إختر--", htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Leave_State, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                @*@Html.DisplayFor(model => model.leave_status.Ls_Name)*@
+                            </td>
+                        </tr>
+                    </table>
+                </div><div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="اتخذ اجراء" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<p>
+
+    @Html.ActionLink("Back to List", "Index")
+</p>

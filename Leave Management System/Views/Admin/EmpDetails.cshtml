@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Leave_Management_System.Models.Employee>
+@{
+    ViewBag.Title = "EmpDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+
+    <div class="card-header">
+        بيانات الموظفين
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Emp_Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.User_Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Password)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Office)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Department)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Role)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+                        <th>الاجراء</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Emp_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Password)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Office1.Office_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Department1.Dep_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role1.Role_Type)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Emp_Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Emp_Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Emp_Id })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+        <div class="text-center">
+
+                                @Html.ActionLink("طباعة تقرير", "PrintReport" ,null,new { @class = "btn btn-primary", @target = "_blank" })
+        </div>
+    </div>
+</div>
+
